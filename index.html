@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meshal Alsabbah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background: #1a2a44;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        header h1:hover {
+            color: #e0e0e0;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        section h2 {
+            color: #1a2a44;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.3rem;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.2s ease;
+        }
+
+        section h2:hover {
+            color: #3b82f6;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: #3b82f6;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        section h2:hover::after {
+            width: 100%;
+        }
+
+        .toggle-btn {
+            font-size: 1rem;
+            color: #1a2a44;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            display: block;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+
+        .section-content.hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .personal-info p,
+        .summary p,
+        .skills p {
+            position: relative;
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .personal-info a {
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .personal-info a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: #3b82f6;
+            bottom: -2px;
+            left: 0;
+            transition: width 0.2s ease;
+        }
+
+        .personal-info a:hover::after {
+            width: 100%;
+        }
+
+        .personal-info a:hover {
+            color: #3b82f6;
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a2a44;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 10;
+        }
+
+        .tooltip:hover::before {
+            opacity: 1;
+        }
+
+        .education-item,
+        .experience-item,
+        .skills-item {
+            padding: 0.8rem;
+            border-left: 3px solid #1a2a44;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 0.6rem;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .education-item:hover,
+        .experience-item:hover,
+        .skills-item:hover {
+            transform: translateY(-2px);
+            background: #f0f0f0;
+        }
+
+        .experience-item ul,
+        .skills-item ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: #1a2a44;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            section h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Meshal Alsabbah</h1>
+            <p>Computer Science Student</p>
+        </header>
+
+        <div class="content">
+            <section class="summary">
+                <h2>
+                    Summary
+                    <span class="toggle-btn" onclick="toggleSection('summary-content')">▼</span>
+                </h2>
+                <div class="section-content" id="summary-content">
+                    <p>
+                        I am a motivated Computer Science student at Shaqra University with a passion for technology and innovation. 
+                        Actively involved in the Google Developer Student Club and student leadership, I have developed strong skills 
+                        in teamwork, event organization, and public relations. My academic journey and hands-on experiences have equipped 
+                        me with a solid foundation in programming and problem-solving, and I am eager to contribute to impactful tech projects.
+                    </p>
+                </div>
+            </section>
+
+            <section class="personal-info">
+                <h2>Personal Information</h2>
+                <div class="section-content">
+                    <p class="tooltip" data-tooltip="Click to copy email">
+                        <strong>Email:</strong> 
+                        <a href="mailto:meshal.alsabbah@gmail.com" onclick="navigator.clipboard.writeText('meshal.alsabbah@gmail.com')">meshal.alsabbah@gmail.com</a>
+                    </p>
+                    <p class="tooltip" data-tooltip="Click to copy phone">
+                        <strong>Phone:</strong> 
+                        <a href="tel:+966546867896" onclick="navigator.clipboard.writeText('+966546867896')">+966 546867896</a>
+                    </p>
+                    <p class="tooltip" data-tooltip="Visit LinkedIn profile">
+                        <strong>LinkedIn:</strong> 
+                        <a href="https://www.linkedin.com/in/meshal-alsabbah-332000310/" target="_blank">linkedin.com</a>
+                    </p>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2>
+                    Skills
+                    <span class="toggle-btn" onclick="toggleSection('skills-content')">▼</span>
+                </h2>
+                <div class="section-content" id="skills-content">
+                    <div class="skills-item">
+                        <h3>Technical Skills</h3>
+                        <ul>
+                            <li>Programming: Python, JavaScript, HTML, CSS</li>
+                            <li>Tools: Git, VS Code, Figma</li>
+                            <li>Frameworks: Flask, Node.js</li>
+                        </ul>
+                    </div>
+                    <div class="skills-item">
+                        <h3>Soft Skills</h3>
+                        <ul>
+                            <li>Teamwork and Collaboration</li>
+                            <li>Event Planning and Organization</li>
+                            <li>Public Speaking and Communication</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="education">
+                <h2>
+                    Education
+                    <span class="toggle-btn" onclick="toggleSection('education-content')">▼</span>
+                </h2>
+                <div class="section-content" id="education-content">
+                    <div class="education-item">
+                        <h3>Bachelor of Computer Science</h3>
+                        <p>Shaqra University</p>
+                        <p>2022 - 2027</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="experience">
+                <h2>
+                    Professional Experience
+                    <span class="toggle-btn" onclick="toggleSection('experience-content')">▼</span>
+                </h2>
+                <div class="section-content" id="experience-content">
+                    <div class="experience-item">
+                        <h3>Google Developer Student Club at Shaqra University</h3>
+                        <ul>
+                            <li>Member of the student council</li>
+                            <li>Organized workshops and events to promote technology.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Student Leadership at Shaqra University</h3>
+                        <ul>
+                            <li>Member of Public Relations and Media</li>
+                            <li>Organized events and activities to enhance student engagement.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>© 2025 Meshal Alsabbah | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            const toggleBtn = content.previousElementSibling.querySelector('.toggle-btn');
+            content.classList.toggle('hidden');
+            toggleBtn.classList.toggle('active');
+        }
+
+        document.querySelectorAll('section h2').forEach(header => {
+            header.addEventListener('click', () => {
+                const sectionId = header.nextElementSibling.id;
+                if (sectionId) toggleSection(sectionId);
+            });
+        });
+    </script>
+</body>
+</html>
